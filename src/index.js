@@ -58,10 +58,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           return <>
             <p className="space-mono-regular small">Projects I've created/involved with:</p>
             <ul>
-              <li className="space-mono-regular small"><a href="https://sintask.com">SinTask.com</a>: Social Media, SaaS Website.</li>
-              <li className="space-mono-regular small"><a href="https://themeforest.net/item/jnews-one-stop-solution-for-web-publishing/20566392">JNews</a>: Blog/Magazine, WordPress Theme</li>
-              <li className="space-mono-regular small"><a href="https://wordpress.org/plugins/gutenverse/">Gutenverse</a>: Site Editor/Builder Ecosystem, WordPress Plugin.</li>
-              <li className="space-mono-regular small"><a href="https://suyogagitayana.github.io/steam-sale/">Steam Sales</a>: Sales/Discount Checker, Data Website.</li>
+              <li className="space-mono-regular small"><a target="_blank" rel="noreferrer" href="https://sintask.com">SinTask.com</a>: Social Media, SaaS Website.</li>
+              <li className="space-mono-regular small"><a target="_blank" rel="noreferrer" href="https://themeforest.net/item/jnews-one-stop-solution-for-web-publishing/20566392">JNews</a>: Blog/Magazine, WordPress Theme</li>
+              <li className="space-mono-regular small"><a target="_blank" rel="noreferrer" href="https://wordpress.org/plugins/gutenverse/">Gutenverse</a>: Site Editor/Builder Ecosystem, WordPress Plugin.</li>
+              <li className="space-mono-regular small"><a target="_blank" rel="noreferrer" href="https://suyogagitayana.github.io/steam-sale/">Steam Sales</a>: Sales/Discount Checker, Data Website.</li>
             </ul>
           </>;
         }}
