@@ -37,7 +37,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       />
       <MainContent
         title="Experiences"
-        initActive={true}
         content={() => {
           return <>
             <h5 className="space-mono-regular red small">2019-Now: Jegstudio</h5>
@@ -62,6 +61,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <li className="space-mono-regular small"><a href="https://sintask.com">SinTask.com</a>: Social Media, SaaS Website.</li>
               <li className="space-mono-regular small"><a href="https://themeforest.net/item/jnews-one-stop-solution-for-web-publishing/20566392">JNews</a>: Blog/Magazine, WordPress Theme</li>
               <li className="space-mono-regular small"><a href="https://wordpress.org/plugins/gutenverse/">Gutenverse</a>: Site Editor/Builder Ecosystem, WordPress Plugin.</li>
+              <li className="space-mono-regular small"><a href="https://suyogagitayana.github.io/steam-sale/">Steam Sales</a>: Sales/Discount Checker, Data Website.</li>
             </ul>
           </>;
         }}

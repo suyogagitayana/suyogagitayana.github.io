@@ -4,16 +4,15 @@ const MainContent = ({
     title = '',
     content = () => {},
     initActive = false,
-    customStyles = {}
 }) => {
     const [active, setActive] = useState(initActive);
 
-    return <div className="main-content">
-        <h4 className="space-mono-regular title">
+    return <div className={`main-content ${active ? 'active' : ''}`} >
+        <h4 className="space-mono-regular title" onClick={() => setActive(!active)}>
             {title}
-            {active ? <span className="toggle" onClick={() => setActive(false)}>✖</span> : <span className="toggle" onClick={() => setActive(true)}>...</span>}
+            <span>✖</span>
         </h4>
-        <div className={`${active ? 'active' : ''} content-desc`}>
+        <div className={`content-desc`}>
             {content()}
         </div>
     </div>;

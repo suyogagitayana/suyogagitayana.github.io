@@ -25,19 +25,23 @@ h4.space-mono-regular {
   position: relative;
   display: flex;
   gap: 8px;
+  width: fit-content;
+  cursor: pointer;
 }
 
 h4.title span {
-  font-size: 8px;
+  font-size: 10px;
   display: flex;
   width: fit-content;
-  border: 1px solid #999;
-  border-radius: 2px;
   align-content: center;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  transform: rotate(-45deg);
+}
+
+.active h4.title span {
+  transform: rotate(0deg);
 }
 
 h4.space-mono-regular:before {
@@ -94,7 +98,7 @@ footer p {
   display: none;
 }
 
-.content-desc.active {
+.active .content-desc {
   display: block;
 }
 
