@@ -64,7 +64,7 @@ h4.space-mono-regular:before {
 
 .content {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: flex-start;
   max-width: 765px;
   min-height: calc(100vh - 36px);
@@ -72,16 +72,19 @@ h4.space-mono-regular:before {
   padding: 24px 16px 12px;
   flex-wrap: wrap;
   border-left: 1px solid #ffbe76;
+  position: relative;
 }
 
 footer {
-  width: 100%;
-  margin: 20px 0 0;
+  margin: 24px 0 0;
+  padding: 12px 0;
+  display: flex;
 }
 
 footer p {
   display: flex;
   justify-content: flex-end;
+  margin: 0;
 }
 
 .avatar {
@@ -94,6 +97,14 @@ footer p {
 .name {
   color: #ffbe76;
   margin: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.name a {
+  cursor: pointer;
+  display: flex;
 }
 
 .content-desc {
@@ -109,7 +120,7 @@ footer p {
 
 h4 {
   color: #ffbe76;
-  margin: 24px 0 8px;
+  margin: 24px 0 4px;
 }
 
 h5 {
@@ -128,8 +139,7 @@ header {
 }
 
 header,
-main,
-footer {
+main {
   width: 100%;
   height: 100%;
 }
