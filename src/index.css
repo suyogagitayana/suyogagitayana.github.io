@@ -5,9 +5,171 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #222;
+  color: #eee;
+}
+
+#root {
+  padding-left: 12px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  color: #7ed6df;
+}
+
+h4.space-mono-regular {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+h4.title span {
+  font-size: 8px;
+  display: flex;
+  width: fit-content;
+  border: 1px solid #999;
+  border-radius: 2px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  cursor: pointer;
+}
+
+h4.space-mono-regular:before {
+  content: "";
+  display: flex;
+  width: 7px;
+  height: 7px;
+  background-color: #ffbe76;
+  position: absolute;
+  top: 9px;
+  left: -20px;
+  transform: rotate(45deg);
+}
+
+.red {
+  color: #ff7979;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 765px;
+  min-height: calc(100vh - 36px);
+  margin: 0 auto;
+  padding: 24px 16px 12px;
+  flex-wrap: wrap;
+  border-left: 1px solid #ffbe76;
+}
+
+footer {
+  width: 100%;
+  margin: 20px 0 0;
+}
+
+footer p {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  margin: 0;
+}
+
+.name {
+  color: #ffbe76;
+  margin: 0;
+}
+
+.content-desc {
+  display: none;
+}
+
+.content-desc.active {
+  display: block;
+}
+
+h4 {
+  color: #ffbe76;
+  margin: 24px 0 8px;
+}
+
+h5 {
+  margin: 12px 0 4px;
+}
+
+p {
+  margin: 6px 0 0 6px;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+header,
+main,
+footer {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  padding-right: 8px;
+}
+
+ul {
+  padding-left: 30px;
+  margin: 0;
+}
+
+.nomargin {
+  margin: 0;
+}
+
+.xsmall {
+  font-size: 12px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
 }
