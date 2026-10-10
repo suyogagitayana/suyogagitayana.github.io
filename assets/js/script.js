@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.nav-links a');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     // Content stays visible if animation support or JavaScript is unavailable.
@@ -66,21 +64,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', scheduleNavigation, { passive: true });
     window.addEventListener('resize', scheduleNavigation);
     highlightNavigation();
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(filterButton => {
-                const active = filterButton === button;
-                filterButton.classList.toggle('active', active);
-                filterButton.setAttribute('aria-pressed', String(active));
-            });
-            let stagger = 0;
-            projectCards.forEach(card => {
-                const wasHidden = card.hidden;
-                card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter;
-                if (!card.hidden && wasHidden) enter(card, stagger++ * 30, 320);
-            });
-            highlightNavigation();
-        });
-    });
 });

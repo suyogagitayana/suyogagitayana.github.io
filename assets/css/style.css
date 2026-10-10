@@ -310,7 +310,6 @@ ul {
 
 .section > .container {
     padding-block: 56px 64px;
-    border-top: 1px solid var(--border-color);
 }
 
 .section-title {
@@ -335,16 +334,27 @@ ul {
 
 .section-intro {
     max-width: 640px;
-    margin-top: -8px;
+    margin-top: -16px;
     margin-bottom: 28px;
     color: var(--text-muted);
     font-size: 0.9375rem;
 }
 
-.stack-icons {
-    display: block;
-    max-width: 100%;
-    height: auto;
+.stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.stack-list li {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--surface-color);
+    font-size: 0.9375rem;
 }
 
 .skills > .container {
@@ -367,42 +377,6 @@ ul {
 .category-title {
     margin-bottom: 16px;
     font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.filter-container {
-    display: flex;
-    gap: 4px;
-    width: fit-content;
-    padding: 4px;
-    background: var(--surface-muted);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-}
-
-.filter-btn {
-    min-height: 44px;
-    padding: 8px 18px;
-    border: 0;
-    border-radius: 5px;
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    font: inherit;
-    font-size: 0.875rem;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    color: var(--primary-color);
-}
-
-.filter-btn:hover {
-    background: var(--surface-color);
-}
-
-.filter-btn.active {
-    background: var(--surface-color);
-    box-shadow: 0 1px 4px rgba(32, 35, 41, 0.1);
     font-weight: 600;
 }
 
@@ -436,7 +410,6 @@ ul {
     grid-column: 1 / -1;
     padding: 24px 16px;
     border: 0;
-    border-bottom: 1px solid var(--border-color);
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -593,37 +566,20 @@ ul {
 }
 
 .contact > .container {
-    color: var(--text-main);
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 32px;
-    max-width: 984px;
-    margin-bottom: 64px;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background: var(--surface-color);
-    padding: 40px;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 24px 40px;
+    padding-block: 48px 56px;
 }
 
-.contact .section-title {
-    margin-bottom: 12px;
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.contact-text {
-    grid-column: 1;
-    grid-row: 2;
-    color: var(--text-muted);
-}
+.contact .section-title { margin-bottom: 0; }
 
 .contact-links {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 12px;
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
 }
 
 .contact-btn.outline {
@@ -631,10 +587,7 @@ ul {
     background: transparent;
 }
 
-.contact-btn.outline:hover {
-    background: var(--surface-muted);
-    border-color: var(--text-muted);
-}
+.contact-btn.outline:hover { background: var(--surface-muted); }
 
 .status-text {
     grid-column: 1 / -1;
@@ -664,7 +617,6 @@ ul {
     max-width: 984px;
     margin-inline: auto;
     padding-block: 24px 32px;
-    border-top: 1px solid var(--border-color);
     color: var(--text-muted);
     font-size: 0.75rem;
 }
@@ -738,14 +690,10 @@ ul {
     }
     .contact > .container {
         display: block;
-        width: calc(100% - 48px);
-        margin-bottom: 40px;
-        padding: 28px 24px;
-    }
-    .contact-text {
-        margin-bottom: 24px;
+        padding: 40px 24px;
     }
     .contact-links {
+        justify-content: flex-start;
         margin-top: 20px;
     }
     .footer {
@@ -789,15 +737,6 @@ ul {
     }
     .name {
         max-width: 70%;
-    }
-    .contact > .container {
-        max-width: calc(100% - 96px);
-        grid-template-columns: 1fr;
-    }
-    .contact-links {
-        grid-column: 1;
-        grid-row: 3;
-        margin-top: 24px;
     }
 }
 
@@ -849,7 +788,7 @@ ul {
     .hero {
         padding-block: 32px;
     }
-    .hero-mark, .filter-container, .hero .btn, .theme-toggle {
+    .hero-mark, .hero .btn, .theme-toggle {
         display: none;
     }
     .section > .container {

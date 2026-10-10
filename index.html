@@ -23,7 +23,8 @@
         <a href="#hero" class="logo">Suyoga.</a>
         <ul class="nav-links">
           <li><a href="#skills">Tech Stack</a></li>
-          <li><a href="#projects">Side Quests</a></li>
+          <li><a href="#projects">Personal</a></li>
+          <li><a href="#work-projects">Work</a></li>
           <li><a href="#contact">Find Me</a></li>
         </ul>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
@@ -44,7 +45,7 @@
           <span class="greeting">Welcome, Traveler! 👋</span>
           <h1 id="intro-title" class="name">Suyoga Gitayana</h1>
           <p class="bio">
-            I'm <strong>Suyoga Gitayana</strong>, a Software Engineer who loves
+            I'm a Software Engineer who loves
             turning random ideas into fun side projects.
           </p>
           <p class="bio bio-secondary">
@@ -67,23 +68,23 @@
         <div class="container">
           <h2 id="skills-title" class="section-title">🛠️ Tech Stack</h2>
           <div class="skills-category">
-            <img class="stack-icons" src="https://skillicons.dev/icons?i=react,js,nodejs,php,python,wordpress" alt="React, JavaScript, Node.js, PHP, Python, and WordPress" title="React, JavaScript, Node.js, PHP, Python, and WordPress" width="300" height="48" loading="lazy" />
+            <ul class="stack-list" aria-label="Technologies">
+              <li>React</li>
+              <li>JavaScript</li>
+              <li>Node.js</li>
+              <li>PHP</li>
+              <li>Python</li>
+              <li>WordPress</li>
+            </ul>
           </div>
         </div>
       </section>
 
       <section id="projects" class="section projects" aria-labelledby="projects-title">
         <div class="container">
-          <div class="section-heading">
-            <h2 id="projects-title" class="section-title">🚀 Side Quests</h2>
-            <div class="filter-container" role="group" aria-label="Filter projects">
-              <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true" aria-controls="project-list">All</button>
-              <button type="button" class="filter-btn" data-filter="work" aria-pressed="false" aria-controls="project-list">Work</button>
-              <button type="button" class="filter-btn" data-filter="personal" aria-pressed="false" aria-controls="project-list">Personal</button>
-            </div>
-          </div>
+          <h2 id="projects-title" class="section-title">🚀 Personal Projects</h2>
           <p class="section-intro">Trying to find some random stuff to code. Check out my pinned projects below!</p>
-          <div id="project-list" class="projects-grid">
+          <div id="personal-project-list" class="projects-grid">
             <article class="project-card featured" data-category="personal">
               <div class="project-content">
                 <span class="project-tag personal">Personal</span>
@@ -99,28 +100,6 @@
                 <div class="project-links">
                   <a
                     href="https://suyogagitayana.github.io/tcg-engine/"
-                    target="_blank" rel="noopener noreferrer"
-                    >View Project</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card featured" data-category="work">
-              <div class="project-content">
-                <span class="project-tag work">Work</span>
-                <h3>Gutenverse</h3>
-                <p>
-                  A WordPress plugin that lets users build entire websites using
-                  the block editor, designed for speed and flexibility.
-                </p>
-                <div class="tags-container">
-                  <span class="tag">WordPress</span>
-                  <span class="tag">React</span>
-                </div>
-                <div class="project-links">
-                  <a
-                    href="https://wordpress.org/plugins/gutenverse/"
                     target="_blank" rel="noopener noreferrer"
                     >View Project</a
                   >
@@ -150,7 +129,7 @@
               </div>
             </article>
 
-            <article class="project-card" data-category="personal">
+            <article class="project-card featured" data-category="personal">
               <div class="project-content">
                 <span class="project-tag personal">Personal</span>
                 <h3>React Pages</h3>
@@ -194,28 +173,6 @@
               </div>
             </article>
 
-            <article class="project-card" data-category="work">
-              <div class="project-content">
-                <span class="project-tag work">Work</span>
-                <h3>JNews</h3>
-                <p>
-                  A versatile WordPress theme built for news and magazine sites,
-                  focusing on speed and easy content management.
-                </p>
-                <div class="tags-container">
-                  <span class="tag">WordPress</span>
-                  <span class="tag">PHP</span>
-                </div>
-                <div class="project-links">
-                  <a
-                    href="https://themeforest.net/item/jnews-one-stop-solution-for-web-publishing/20566392"
-                    target="_blank" rel="noopener noreferrer"
-                    >View Project</a
-                  >
-                </div>
-              </div>
-            </article>
-
             <article class="project-card" data-category="personal">
               <div class="project-content">
                 <span class="project-tag personal">Personal</span>
@@ -243,18 +200,64 @@
         </div>
       </section>
 
+      <section id="work-projects" class="section projects work-projects" aria-labelledby="work-projects-title">
+        <div class="container">
+          <h2 id="work-projects-title" class="section-title">💼 Work Projects</h2>
+          <div id="work-project-list" class="projects-grid">
+            <article class="project-card" data-category="work">
+              <div class="project-content">
+                <span class="project-tag work">Work</span>
+                <h3>Gutenverse</h3>
+                <p>
+                  A WordPress plugin that lets users build entire websites using
+                  the block editor, designed for speed and flexibility.
+                </p>
+                <div class="tags-container">
+                  <span class="tag">WordPress</span>
+                  <span class="tag">React</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://wordpress.org/plugins/gutenverse/"
+                    target="_blank" rel="noopener noreferrer"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="work">
+              <div class="project-content">
+                <span class="project-tag work">Work</span>
+                <h3>JNews</h3>
+                <p>
+                  A versatile WordPress theme built for news and magazine sites,
+                  focusing on speed and easy content management.
+                </p>
+                <div class="tags-container">
+                  <span class="tag">WordPress</span>
+                  <span class="tag">PHP</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://themeforest.net/item/jnews-one-stop-solution-for-web-publishing/20566392"
+                    target="_blank" rel="noopener noreferrer"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section contact" aria-labelledby="contact-title">
         <div class="container">
           <h2 id="contact-title" class="section-title">🌐 Find Me</h2>
           <div class="contact-links">
             <a href="mailto:suyoga.code@gmail.com" class="contact-btn">Email Me</a>
             <a href="https://github.com/suyogagitayana" class="contact-btn outline" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a
-              href="https://www.linkedin.com/in/suyoga-gitayana"
-              class="contact-btn outline"
-              target="_blank" rel="noopener noreferrer"
-              >LinkedIn</a
-            >
+            <a href="https://www.linkedin.com/in/suyoga-gitayana" class="contact-btn outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </section>
