@@ -1,100 +1,86 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.section-title, .skill-item, .project-card, .contact-text, .contact-links, .bio, .btn');
-    
-    animatedElements.forEach((el, index) => {
-        el.classList.add('reveal');
-    });
-
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Content stays visible if animation support or JavaScript is unavailable.
+    function enter(element, delay = 0, duration = 400) {
+        if (reducedMotion.matches || typeof element.animate !== 'function') return;
+        element.getAnimations().forEach(animation => animation.cancel());
+        element.animate([
+            { opacity: 0, transform: 'translateY(8px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+        ], { duration, delay, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' });
+    }
+
+    document.querySelectorAll('.greeting, .name, .bio, .hero .btn, .hero-mark')
+        .forEach((element, index) => enter(element, index * 40, 480));
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            let stagger = 0;
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                enter(entry.target, stagger++ * 30);
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.section-title, .skills-category, .project-card, .contact-text, .contact-links, .status-text')
+            .forEach(element => observer.observe(element));
+    }
+
+    reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) {
+            document.getAnimations().forEach(animation => animation.cancel());
+        }
+    });
 
     function highlightNavigation() {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
-
         let current = '';
-        
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        const readingLine = document.querySelector('.header').offsetHeight
+            + Math.min(160, window.innerHeight * 0.25);
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top <= readingLine) current = section.id;
+        });
+        if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
             current = 'contact';
-        } else {
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
         }
-
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
+            const active = link.getAttribute('href') === `#${current}`;
+            link.classList.toggle('active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
         });
     }
 
-    window.addEventListener('scroll', highlightNavigation);
-    
-    highlightNavigation();
-
-    highlightNavigation();
-
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.classList.remove('hide');
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    card.classList.add('hide');
-                }
-            });
+    let navigationFrame = null;
+    function scheduleNavigation() {
+        if (navigationFrame !== null) return;
+        navigationFrame = window.requestAnimationFrame(() => {
+            highlightNavigation();
+            navigationFrame = null;
         });
-    });
+    }
+    window.addEventListener('scroll', scheduleNavigation, { passive: true });
+    window.addEventListener('resize', scheduleNavigation);
+    highlightNavigation();
 
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-    document.addEventListener('keydown', (e) => {
-        if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-            (e.ctrlKey && e.key === 'U')
-        ) {
-            e.preventDefault();
-        }
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(filterButton => {
+                const active = filterButton === button;
+                filterButton.classList.toggle('active', active);
+                filterButton.setAttribute('aria-pressed', String(active));
+            });
+            let stagger = 0;
+            projectCards.forEach(card => {
+                const wasHidden = card.hidden;
+                card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter;
+                if (!card.hidden && wasHidden) enter(card, stagger++ * 30, 320);
+            });
+            highlightNavigation();
+        });
     });
 });
