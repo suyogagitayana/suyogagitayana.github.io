@@ -4,17 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     // Content stays visible if animation support or JavaScript is unavailable.
-    function enter(element, delay = 0, duration = 400) {
+    function enter(element, delay = 0, duration = 320) {
         if (reducedMotion.matches || typeof element.animate !== 'function') return;
         element.getAnimations().forEach(animation => animation.cancel());
         element.animate([
-            { opacity: 0, transform: 'translateY(8px)' },
+            { opacity: 0, transform: 'translateY(4px)' },
             { opacity: 1, transform: 'translateY(0)' }
         ], { duration, delay, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' });
     }
 
     document.querySelectorAll('.greeting, .name, .bio, .hero .btn, .hero-mark')
-        .forEach((element, index) => enter(element, index * 40, 480));
+        .forEach((element, index) => enter(element, index * 30, 380));
 
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(entries => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             });
         }, { threshold: 0.08 });
-        document.querySelectorAll('.section-title, .skills-category, .project-card, .contact-text, .contact-links, .status-text')
+        document.querySelectorAll('.section-title, .skills-category, .project-card, .contact-links')
             .forEach(element => observer.observe(element));
     }
 
