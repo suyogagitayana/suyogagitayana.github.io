@@ -2,6 +2,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.nav-links a');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const previewDialog = document.querySelector('.image-dialog');
+
+    if (previewDialog && typeof previewDialog.showModal === 'function') {
+        const previewImage = previewDialog.querySelector('.dialog-image');
+        const previewTitle = previewDialog.querySelector('#preview-title');
+        document.querySelectorAll('[data-preview]').forEach(link => {
+            link.addEventListener('click', event => {
+                // Preserve opening the original image in a new tab.
+                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                previewTitle.textContent = link.dataset.preview;
+                previewImage.src = link.href;
+                previewImage.alt = link.querySelector('img').alt;
+                previewDialog.showModal();
+                document.documentElement.classList.add('preview-open');
+            });
+        });
+        const closePreview = previewDialog.querySelector('.preview-close');
+        closePreview.addEventListener('click', () => previewDialog.close());
+        previewDialog.addEventListener('keydown', event => {
+            // The close button is the only interactive control in this dialog.
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                closePreview.focus();
+            }
+        });
+        previewDialog.addEventListener('click', event => {
+            if (event.target !== previewDialog) return;
+            const bounds = previewDialog.getBoundingClientRect();
+            if (event.clientX < bounds.left || event.clientX > bounds.right
+                || event.clientY < bounds.top || event.clientY > bounds.bottom) previewDialog.close();
+        });
+        previewDialog.addEventListener('close', () => document.documentElement.classList.remove('preview-open'));
+    }
 
     // Content stays visible if animation support or JavaScript is unavailable.
     function enter(element, delay = 0, duration = 320) {
