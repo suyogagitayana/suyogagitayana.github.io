@@ -357,6 +357,7 @@ ul {
 .stack-list {
     display: flex;
     flex-wrap: wrap;
+    max-width: 22rem;
     justify-content: flex-end;
     gap: 8px;
     color: var(--text-muted);
@@ -364,6 +365,7 @@ ul {
 }
 
 .stack-list li {
+    flex: 0 0 auto;
     padding: 6px 12px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
